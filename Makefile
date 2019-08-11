@@ -6,13 +6,13 @@ build:
 	go build -ldflags "-X main.version=$(TAG)" -o news .
 
 pack: build
-	sudo docker build -t sample/news-service:$(TAG) .
+	sudo docker build -t news-service:$(TAG) .
 
 run:
-	sudo docker run -d -p 3333:3000 --name go-app-container sample/news-service:$(TAG)
+	sudo docker run -d -p 3333:3000 --name go-app-container news-service:$(TAG)
 
 tag:
-	sudo docker tag sample/news-service:$(TAG) sisimogangg/sample/news-service:$(TAG)
+	sudo docker tag news-service:$(TAG) sisimogangg/news-service:$(TAG)
 
 push:
-	sudo docker push sisimogangg/sample/news-service:$(TAG)  
+	sudo docker push sisimogangg/news-service
